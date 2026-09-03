@@ -4,7 +4,7 @@ public class OperatorTableCalculator {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("첫 번째 수: ");
+        System.out.print("첫 번째 수: ");git push -u origin main
         double first = scanner.nextDouble();
 
         System.out.print("두 번째 수: ");
