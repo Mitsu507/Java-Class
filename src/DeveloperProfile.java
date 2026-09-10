@@ -1,7 +1,7 @@
 import java.util.Scanner;
 public class DeveloperProfile {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        /*Scanner scanner = new Scanner(System.in);
 
         System.out.print("이름: ");
         String name = scanner.nextLine().trim();
@@ -29,6 +29,6 @@ public class DeveloperProfile {
         System.out.printf("취업 가능: %b%n", available);
         System.out.println(introduction);
 
-        scanner.close();
+        scanner.close();*/
     }
 }
