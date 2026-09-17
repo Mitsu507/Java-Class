@@ -34,6 +34,10 @@ public class FinalEventCheckIn {
                         System.out.println("학번과 이름을 다시 입력해주세요");
                         break;
                     }
+                    if (!studentId.matches("\\d+")) {  //학번에 문자가 들어가는게 이상해서 따로 추가 했습니다.
+                        System.out.println("학번은 숫자만 입력하세요"); // \\d 부분만 AI 사용했습니다.
+                        break;
+                    }
                     // TODO 2. 같은 학번이 이미 있는지 배열 전체를 확인하세요.
                     boolean duplicate = false;
                     for (StudentEntry entry : entries) {
@@ -49,8 +53,10 @@ public class FinalEventCheckIn {
                     // TODO 3. null인 첫 칸을 찾고 StudentEntry 객체를 저장하세요.
                     int emptyIndex = -1;
                     for (int i = 0; i < entries.length; i++) {
-                        emptyIndex = i;
-                        break;
+                        if (entries[i] == null) {
+                            emptyIndex = i;
+                            break;
+                        }
                     }
                     // TODO 4. 다섯 칸이 모두 찼다면 정원 마감을 출력하세요.
                     if (emptyIndex == -1) {
@@ -68,15 +74,16 @@ public class FinalEventCheckIn {
                     // TODO 5. null을 건너뛰며 위치, 학번, 이름을 출력하세요.
                     // 아무도 없으면 "등록된 신청자가 없습니다."를 출력하세요.
                     int displayed = 0;
-                    for (String  : ) {
-                        if(displayed == 0) {
-                            System.out.println("등록된 신정자가 없습니다.");
-                            break;
-                        }
-                        if(displayed > 0) {
-
+                    for (int i = 0; i < entries.length; i++) {
+                        if (entries[i] != null) {
+                            System.out.println((i + 1) + "번 " + entries[i].studentId + " " + entries[i].name);
+                            displayed++;
                         }
                     }
+                    if (displayed == 0) {
+                        System.out.println("등록된 신청자가 없습니다.");
+                    }
+                    break;
 
                 case "3":
                     System.out.print("취소할 학번: ");
@@ -84,21 +91,27 @@ public class FinalEventCheckIn {
                     // TODO 6. 학번을 찾아 해당 칸에 null을 넣으세요.
                     // 없는 학번이라면 그 사실을 알려 주세요.
                     int canceledIndex = -1;
-                    for () {
-                        if () {
-
-                        }else {
-                            String canceledName = entries[canceledIndex].name;
-
+                    for (int i = 0; i < entries.length; i++) {
+                        if (entries[i] != null && entries[i].studentId.equals(cancelId)) {
+                            canceledIndex = i;
+                            break;
                         }
                     }
+                    if (canceledIndex == -1) {
+                        System.out.println("없는 학번입니다.");
+                    } else {
+                        String canceledName = entries[canceledIndex].name;
+                        entries[canceledIndex] = null;
+                        System.out.println(canceledName + "학생 취소 완료");
+                    }
+                    break;
 
                 case "4": //현황
                     // TODO 7. null이 아닌 칸을 세어 현재 인원과 남은 자리를 출력하세요.
                     int count = 0;
-                    for () {
-                        if() {
-
+                    for (int i = 0; i < entries.length; i++) {
+                        if (entries[i] != null) {
+                            count++;
                         }
                     }
                     System.out.println("현재 신청: " + count + "명");
